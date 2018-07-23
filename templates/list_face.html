@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if mode == 'searchByFace' %}
+    <div>You can click on the name of each person to check the access information.</div>
+{% elif mode == 'removeFace' %}
+    <div>Please click the face to remove. </div>
+{% endif %}
+<ul>
+{% for each in face %}
+    {% if mode == 'searchByFace' %}
+    <li> <a href ="{{ url_for('stats', name = each) }}"> {{ each }}</a></li>
+    {% elif mode == 'removeFace' %}
+    <li> <a href ="{{ url_for('remove_face_confirmation', name = each) }}"> {{ each }}</a></li>
+    {% endif %}
+{% endfor %}
+</ul>
+    
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>This is the setting page</div>
+<br>
+<div>You can enable face recognition login here: <a href="{{ url_for('enable_face_login') }}">Enable Face Recognition Login</a></div>
+<br>
+<div>Changes you can make: </div>
+<ul>
+    <li><a href = "{{ url_for('delete_all_faces') }}">Clear user face direcotry: </a></li>
+    {% if user %}
+        {% if user.shape == 'rectangle' %}
+            <li><a href = " {{ url_for('change_shape') }}">Change to ellipse shape</a></li>
+        {% elif user.shape == 'ellipse' %}
+            <li><a href = " {{ url_for('change_shape') }}">Change to rectangle shape</a></li>
+        {% endif %}
+    {% endif %}
+    <li><a href = "{{ url_for('list_face', mode = 'removeFace') }}">Remove a face from the database</a></li>
+</ul>
+{% endblock %}

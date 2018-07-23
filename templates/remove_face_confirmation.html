@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>Are you sure to remove this face?</div>
+<div><a href = "{{ url_for('remove_face', name = name) }}">Yes</a>  <a href = "{{ url_for('setting') }}">No</a>
+ </div>
+
+{% endblock %}

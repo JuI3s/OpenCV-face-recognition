@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div> 
+        <a href="{{ url_for('list_face', mode = 'searchByFace') }}">List All People</a>
+    </div>
+    <ul>
+    {% if single_person %}
+        Access information for {{ face }}
+        <ul>
+        {% for each in access %}
+            <li>{{ each }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        {% for each in face %}
+            <li> 
+                Access information for {{ each }}:
+                <ul>
+                {% for each_access in access[each] %}
+                    <li>{{ each_access }}</li>
+                {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    {% endif %}
+    </ul>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<html>
+  <head>
+    {% if mode == "recognition" %}
+      <title>Live Face Recognition</title>
+    {% elif mode == "addface" %}
+      <title>Adding a new face</title>
+    {% elif mode == "facelogin" %}
+      <title>Face recognition login</title>    
+    {% endif %}
+  </head>
+  <body>
+    {% if mode == "recognition" %}
+      <h1>Live Face Recognition</h1>
+      <a href="{{ url_for('index') }}">Return to Home</a>
+    {% elif mode == "addface" %}
+      <h1>Adding a new face</h1>
+    {% elif mode == "facelogin" %}
+        <a href="{{ url_for('login_face') }}">Login Face</a>
+        <h1>Face recognition login</h1>   
+    {% endif %}
+    <img src="{{ url_for('video_feed', mode = mode, path = path ) }}">
+  </body>
+</html>
+
+{% endblock %}

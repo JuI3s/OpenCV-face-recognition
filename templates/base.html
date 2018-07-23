@@ -1,0 +1,36 @@
+<html>
+    <!-- This is a html template for the navigation bar and acts as a base template that can be used by other HTML files-->
+    <head>
+        {% if title %}
+        <title>{{ title }} - Face Recognition </title>
+        {% else %}
+        <title>Welcome to Face Recognition</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>
+            Face Recognition Security :
+            <a href="{{ url_for('index') }}">Home</a>
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}">Login</a>
+            {% else %}
+            <a href="{{ url_for('logout') }}">Logout</a>
+            <a href="{{ url_for('add_face') }}">Add New Face</a>
+            <a href="{{ url_for('recognition') }}">Start Face Recognition</a>
+            <a href="{{ url_for('stats') }}">Statistics</a>
+            <a href="{{ url_for('setting') }}">Setting</a>
+            {% endif %}
+        </div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </body>
+</html>

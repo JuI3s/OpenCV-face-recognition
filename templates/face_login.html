@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>Click "Continue" to direct to the face recognition login check. Before you continue, please make sure that you have enabled user login with face recognition by.</p>
+
+<p><a href="{{ url_for('face_check') }}">Continue </a> </p>
+<p>You have to enable user login with face recognition in the setting before using this feature. </p>
+
+{% endblock %}
